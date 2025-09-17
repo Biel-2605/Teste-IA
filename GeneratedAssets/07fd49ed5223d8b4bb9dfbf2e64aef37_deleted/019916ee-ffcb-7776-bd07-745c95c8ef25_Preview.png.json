@@ -1,0 +1,11 @@
+{
+    "asset": "07fd49ed5223d8b4bb9dfbf2e64aef37",
+    "fileName": "019916ee-ffcb-7776-bd07-745c95c8ef25_Preview.png",
+    "prompt": "cube material",
+    "negativePrompt": "",
+    "model": "575ecf67-4425-4939-97b9-5e138b8ee234",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1170463733,
+    "w3CTraceId": "eee4d88238de1ae95250f42ad0a1e4f8",
+    "refinementMode": "Generation"
+}

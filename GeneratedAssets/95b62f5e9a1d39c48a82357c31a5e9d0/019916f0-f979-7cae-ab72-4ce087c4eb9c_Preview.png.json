@@ -1,0 +1,11 @@
+{
+    "asset": "95b62f5e9a1d39c48a82357c31a5e9d0",
+    "fileName": "019916f0-f979-7cae-ab72-4ce087c4eb9c_Preview.png",
+    "prompt": "red brick material",
+    "negativePrompt": "",
+    "model": "575ecf67-4425-4939-97b9-5e138b8ee234",
+    "modelName": "Unity Texture2D",
+    "customSeed": 1119841562,
+    "w3CTraceId": "900a25327106857d37b7078605614c9e",
+    "refinementMode": "Generation"
+}
