@@ -34,29 +34,57 @@ public class Node : MonoBehaviour
             if (nodeType == NodeType.Start)
             {
                 GetComponent<Renderer>().material = floor;
+                GameObject.Find("GameManager").GetComponent<GameManager>().start = null;
                 nodeType = NodeType.Floor;
                 GameObject.Find("GameManager").GetComponent<GameManager>().hasStart = false;
+                GameObject.Find("GameManager").GetComponent<GameManager>().isSearching = false;
+                GameObject.Find("GameManager").GetComponent<Data>().stackDFS.Clear();
+                GameObject.Find("GameManager").GetComponent<Data>().visitedNodes.Clear();
                 
             }
             else if (nodeType == NodeType.Goal)
             {
                 GetComponent<Renderer>().material = floor;
+                GameObject.Find("GameManager").GetComponent<GameManager>().goal = null;
                 nodeType = NodeType.Floor;
                 GameObject.Find("GameManager").GetComponent<GameManager>().hasGoal = false;
+                GameObject.Find("GameManager").GetComponent<GameManager>().isSearching = false;
+                GameObject.Find("GameManager").GetComponent<Data>().stackDFS.Clear();
+                GameObject.Find("GameManager").GetComponent<Data>().visitedNodes.Clear();
             }
             else
             {
                 if (!GameObject.Find("GameManager").GetComponent<GameManager>().hasStart)
                 {
                     GetComponent<Renderer>().material = start;
+                    GameObject.Find("GameManager").GetComponent<GameManager>().start = this;
                     nodeType = NodeType.Start;
+                    GameObject.Find("GameManager").GetComponent<Data>().stackDFS.Push(this);
                     GameObject.Find("GameManager").GetComponent<GameManager>().hasStart = true;
+                    if (GameObject.Find("GameManager").GetComponent<GameManager>().hasGoal)
+                    {
+                        GameObject.Find("GameManager").GetComponent<GameManager>().isSearching = true;
+                        
+                    }
                 }
                 else if (!GameObject.Find("GameManager").GetComponent<GameManager>().hasGoal)
                 {
                     GetComponent<Renderer>().material = finish;
+                    GameObject.Find("GameManager").GetComponent<GameManager>().goal = this;
                     nodeType = NodeType.Goal;
                     GameObject.Find("GameManager").GetComponent<GameManager>().hasGoal = true;
+                    if (GameObject.Find("GameManager").GetComponent<GameManager>().hasStart)
+                    {
+                        GameObject.Find("GameManager").GetComponent<GameManager>().isSearching = true;
+                        foreach (GameObject n in GameObject.Find("GameManager").GetComponent<GameManager>().nodes)
+                        {
+                            if(n.GetComponent<Node>().nodeType == NodeType.Start)
+                            {
+                                GameObject.Find("GameManager").GetComponent<Data>().stackDFS.Push(n.GetComponent<Node>());
+                                break;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -75,3 +103,5 @@ public class Node : MonoBehaviour
         */
     }
 }
+
+

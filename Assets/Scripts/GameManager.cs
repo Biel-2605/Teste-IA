@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,10 +24,21 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public bool hasStart = false;
     [HideInInspector]
+    public Node start;
+    [HideInInspector]
     public bool hasGoal = false;
+    [HideInInspector]
+    public Node goal;
 
-    [Header("Search Type")]
+    [Header("Search")]
     public searchType searchType = searchType.DFS;
+    public Data data;
+    public float searchDelay = 1f; // atraso entre cada passo da busca
+    float searchTimer = 0f;
+
+
+    [HideInInspector]
+    public bool isSearching = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,7 +53,27 @@ public class GameManager : MonoBehaviour
         {
             HandleMouseClick();
         }
+
+        if (isSearching)
+        {
+            searchTimer += Time.deltaTime;
+            if (searchTimer >= searchDelay)
+            {
+                searchTimer = 0f;
+                if (searchType == searchType.DFS)
+                {
+                    DFS.PerformSearchStep();
+                    UnityEngine.Debug.Log(data.stackDFS.Count);
+                }
+                else if (searchType == searchType.BFS)
+                {
+                    //BFS.PerformSearchStep();
+                }
+            }
+        }
     }
+
+    
      
 
     private void HandleMouseClick()
