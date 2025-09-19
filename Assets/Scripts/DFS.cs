@@ -19,6 +19,7 @@ public class DFS : MonoBehaviour
     static void FindNeighbor(Node currentNode)
     {
         HashSet<Node> visitedNodes = GameObject.Find("GameManager").GetComponent<Data>().visitedNodes;
+        currentNode.GetComponent<Renderer>().material = currentNode.possibleWay;
         bool goalFound = false;
         foreach (Node neighbor in currentNode.neighbors)
         {
@@ -42,8 +43,13 @@ public class DFS : MonoBehaviour
                     visitedNodes.Add(neighbor);
                     GameObject.Find("GameManager").GetComponent<Data>().stackDFS.Push(neighbor);
                     neighborFound = true;
-                    currentNode.GetComponent<Renderer>().material. = current.possibleWay;
+                    
                 }
+            }
+            if (!neighborFound)
+            {
+                GameObject.Find("GameManager").GetComponent<Data>().stackDFS.Pop();
+                currentNode.GetComponent<Renderer>().material = currentNode.blackListed;
             }
         }
     }
