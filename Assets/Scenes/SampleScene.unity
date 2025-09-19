@@ -256,10 +256,13 @@ MonoBehaviour:
   start: {fileID: 0}
   hasGoal: 0
   goal: {fileID: 0}
-  searchType: 1
+  searchType: 0
   data: {fileID: 0}
-  searchDelay: 1
+  searchDelay: 0.35
   isSearching: 0
+  searchDone: 0
+  animationSpeed: 0.1
+  lightTrailLength: 3
 --- !u!4 &886118977
 Transform:
   m_ObjectHideFlags: 0
@@ -287,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c0b5a266bdd72448f22b2e5e31b2fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Data
+  listBFS: []
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
