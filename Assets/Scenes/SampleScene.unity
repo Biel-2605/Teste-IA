@@ -226,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886118977}
   - component: {fileID: 886118976}
+  - component: {fileID: 886118978}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -252,8 +253,13 @@ MonoBehaviour:
   nodes: []
   walls: []
   hasStart: 0
+  start: {fileID: 0}
   hasGoal: 0
+  goal: {fileID: 0}
   searchType: 1
+  data: {fileID: 0}
+  searchDelay: 1
+  isSearching: 0
 --- !u!4 &886118977
 Transform:
   m_ObjectHideFlags: 0
@@ -269,6 +275,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &886118978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886118975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c0b5a266bdd72448f22b2e5e31b2fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Data
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
